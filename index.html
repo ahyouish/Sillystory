@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Silly Story Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Silly Story Generator</h1>
+    <input type="text" id="nameInput" placeholder="Enter a name..." />
+    <button onclick="generateStory()">Generate Story</button>
+    <p id="storyOutput"></p>
+  </div>
+
+  <script>
+    const stories = [
+      "{name} found a talking banana in their backpack and started a rap battle!",
+      "One day, {name} accidentally adopted a dinosaur thinking it was a dog.",
+      "While brushing teeth, {name} discovered a secret portal to a jellybean universe!",
+      "In a shocking twist, {name} became president of Mars for eating the most pizza.",
+      "{name} slipped on a rainbow and landed in a land of dancing pineapples.",
+      "Suddenly, {name} could speak fluent duck and became the mayor of Duckville.",
+      "{name} invented invisible spaghetti and accidentally tripped over it.",
+      "Aliens abducted {name}, but sent them back because they were too silly.",
+      "{name} tried to cook noodles but ended up summoning a spaghetti monster.",
+      "{name} became famous for teaching monkeys how to ride unicycles!"
+    ];
+
+    function generateStory() {
+      const name = document.getElementById("nameInput").value.trim();
+      const output = document.getElementById("storyOutput");
+
+      if (name === "") {
+        output.textContent = "Please enter a name first!";
+        return;
+      }
+
+      const randomIndex = Math.floor(Math.random() * stories.length);
+      const story = stories[randomIndex].replace("{name}", name);
+      output.textContent = story;
+    }
+  </script>
+</body>
+</html>
